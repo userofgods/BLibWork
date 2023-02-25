@@ -1,0 +1,156 @@
+local BLib = {
+	Active = {true},
+}
+
+function BLib:MakeWindow(Name)
+	local Gui = Instance.new("ScreenGui")
+	local TopCore = Instance.new("Frame")
+	local UICorner = Instance.new("UICorner")
+	local Core = Instance.new("Frame")
+	local UICorner_2 = Instance.new("UICorner")
+	local UIGridLayout = Instance.new("UIGridLayout")
+	local Title = Instance.new("TextLabel")
+	local UICorner_7 = Instance.new("UICorner")
+	local Cancel = Instance.new("TextButton")
+	local UICorner_8 = Instance.new("UICorner")
+	
+	Gui.Name = "Gui"
+	Gui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	Gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+	TopCore.Name = "TopCore"
+	TopCore.Parent = Gui
+	TopCore.BackgroundColor3 = Color3.fromRGB(38, 38, 38)
+	TopCore.Position = UDim2.new(0.328528076, 0, 0.328695685, 0)
+	TopCore.Size = UDim2.new(0, 451, 0, 28)
+	TopCore.Active = true
+	TopCore.Draggable = true
+	
+	UICorner.Parent = TopCore
+
+	Core.Name = "Core"
+	Core.Parent = TopCore
+	Core.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+	Core.Position = UDim2.new(0, 0, 0.635714412, 0)
+	Core.Size = UDim2.new(0, 451, 0, 293)
+
+	UICorner_2.Parent = Core
+	
+	UIGridLayout.Parent = Core
+	UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIGridLayout.CellSize = UDim2.new(0, 100, 0, 55)
+	
+	Title.Name = "Title"
+	Title.Parent = TopCore
+	Title.BackgroundColor3 = Color3.fromRGB(54, 54, 54)
+	Title.Position = UDim2.new(0.345898032, 0, -0.0357146859, 0)
+	Title.Size = UDim2.new(0, 139, 0, 18)
+	Title.Font = Enum.Font.Unknown
+	Title.Text = Name
+	Title.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Title.TextScaled = true
+	Title.TextSize = 14.000
+	Title.TextWrapped = true
+
+	UICorner_7.Parent = Title
+
+	Cancel.Name = "Cancel"
+	Cancel.Parent = TopCore
+	Cancel.BackgroundColor3 = Color3.fromRGB(108, 108, 108)
+	Cancel.Position = UDim2.new(0.957871377, 0, 0.0285715312, 0)
+	Cancel.Rotation = 90.000
+	Cancel.Size = UDim2.new(0, 11, 0, 13)
+	Cancel.Font = Enum.Font.SourceSans
+	Cancel.Text = "X"
+	Cancel.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Cancel.TextSize = 14.000
+
+	UICorner_8.Parent = Cancel
+	
+	local function YRUJXQG_fake_script()
+		local script = Instance.new('LocalScript', Cancel)
+
+		script.Parent.MouseButton1Click:Connect(function()
+			script.Parent.Parent.Parent:Destroy()
+		end)
+	end
+	coroutine.wrap(YRUJXQG_fake_script)()
+	
+	local ButtonsCore = {}
+	
+	function ButtonsCore:AddButton(Name, fpcall)
+		local Button = Instance.new("TextButton")
+		local UICorner_3 = Instance.new("UICorner")
+		local p = fpcall or function() end
+		
+		Button.Name = "Button"
+		Button.Parent = Core
+		Button.BackgroundColor3 = Color3.fromRGB(94, 94, 94)
+		Button.Size = UDim2.new(0, 200, 0, 50)
+		Button.Font = Enum.Font.Unknown
+		Button.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Button.TextScaled = true
+		Button.TextSize = 11.000
+		Button.TextWrapped = true
+		Button.Text = Name
+
+		UICorner_3.Parent = Button
+		
+		Button.MouseButton1Click:Connect(function()
+			pcall(p)
+		end)
+	end
+	
+	function ButtonsCore:AddToggle(Name ,pp)
+		local Toggle = Instance.new("TextButton")
+		local UICorner_4 = Instance.new("UICorner")
+		local B = Instance.new("Frame")
+		local UICorner_5 = Instance.new("UICorner")
+		local A = Instance.new("Frame")
+		local UICorner_6 = Instance.new("UICorner")
+		local p = pp or function() end
+
+		Toggle.Name = "Toggle"
+		Toggle.Parent = Core
+		Toggle.BackgroundColor3 = Color3.fromRGB(94, 94, 94)
+		Toggle.Position = UDim2.new(0.235033259, 0, 0, 0)
+		Toggle.Size = UDim2.new(0, 100, 0, 55)
+		Toggle.Font = Enum.Font.Unknown
+		Toggle.Text = Name
+		Toggle.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Toggle.TextSize = 20.000
+		Toggle.TextWrapped = true
+		Toggle.TextXAlignment = Enum.TextXAlignment.Left
+
+		UICorner_4.Parent = Toggle
+		
+		B.Name = "B"
+		B.Parent = Toggle
+		B.BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+		B.Position = UDim2.new(0.569999993, 0, 0.290909082, 0)
+		B.Size = UDim2.new(0, 37, 0, 22)
+
+		UICorner_5.Parent = B
+
+		A.Name = "A"
+		A.Parent = B
+		A.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+		A.Position = UDim2.new(0.323000014, -7, 0.136000007, 0)
+		A.Size = UDim2.new(0, 17, 0, 17)
+
+		UICorner_6.Parent = A
+		
+		local function Set()
+			enabled = not enabled
+			A:TweenPosition(enabled and UDim2.new(0.323000014, 7, 0.136000007, 0) or UDim2.new(0.323000014, -7, 0.136000007, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.4)
+			A.BackgroundColor3 = enabled and Color3.new(0, 1, 0) or Color3.new(1, 0, 0)
+			pcall(p, enabled)
+		end
+		
+		Toggle.MouseButton1Click:Connect(Set)
+	end
+	
+	return ButtonsCore
+end
+
+return BLib
